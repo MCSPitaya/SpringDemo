@@ -4,8 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.springframework.hateoas.ResourceSupport;
+
 @Entity
-public class Customer {
+public class Customer extends ResourceSupport {
 
 	@Id
 	@GeneratedValue
