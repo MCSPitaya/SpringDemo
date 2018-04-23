@@ -1,0 +1,30 @@
+
+
+	@Bean
+	public CommandLineRunner init(CustomerRepository repo) {
+		return args -> {
+			repo.save(new Customer("Dillon", "Galloway", "Bern"));
+			repo.save(new Customer("Ireland", "Foley", "Zürich"));
+			repo.save(new Customer("Kaylynn", "Archer", "Geneva"));
+			repo.save(new Customer("Marilyn", "Hatfield", "Bern"));
+			repo.save(new Customer("Jaqueline", "Morgan", "Luzern"));
+			repo.save(new Customer("Braydon", "Ho", "Zürich"));
+			repo.save(new Customer("Alessandro", "Hendricks", "Luzern"));
+		};
+	}
+
+
+		for (Customer c : data) {
+			c.add(linkTo(CustomerController.class).slash(c.getCustomerId()).withSelfRel());
+			c.add(linkTo(CustomerController.class).slash(c.getCustomerId()).slash("/picture")
+					.withRel("profilePicture"));
+		}
+
+		
+			customer.ifPresent(c -> {
+			c.add(linkTo(CustomerController.class).withRel("customers"));
+			c.add(linkTo(CustomerController.class).slash(c.getCustomerId()).withSelfRel());
+			c.add(linkTo(CustomerController.class).slash(c.getCustomerId()).slash("/picture")
+					.withRel("profilePicture"));
+		});
+		
